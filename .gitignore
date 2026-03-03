@@ -130,3 +130,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Local generated docs
+FuseLLM_EXPLAINERS/
