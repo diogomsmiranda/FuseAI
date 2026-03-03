@@ -3,9 +3,9 @@
 # Override any variable before sbatch if needed, for example:
 #   RAW_DATASET_DIR=/mnt/scratch-artemis/diogomiranda/datasets/minipile_disk sbatch 01_split_long_text.sbatch
 
-export PROJECT_ROOT="${PROJECT_ROOT:-/mnt/home/diogomiranda/FuseAI/FuseLLM}"
-export VENV_PATH="${VENV_PATH:-/mnt/home/diogomiranda/.venv}"
-export PYTHON_MODULE="${PYTHON_MODULE:-python/3.12.5}"
+export PROJECT_ROOT="${PROJECT_ROOT:-/home/diogomiranda/FuseAI/FuseLLM}"
+export VENV_PATH="${VENV_PATH:-/mnt/home/diogomiranda/mopd}"
+export PYTHON_MODULE="${PYTHON_MODULE:-python/3.10.14}"
 
 export BASE_MODEL="${BASE_MODEL:-/mnt/scratch-artemis/diogomiranda/Llama-3.2-1B}"
 export BLEND_MODEL_0="${BLEND_MODEL_0:-/mnt/scratch-artemis/diogomiranda/Qwen/Qwen3-1.7B-Base}"
