@@ -33,27 +33,56 @@ logger = get_logger(__name__)
 IGNORE_TOKEN_ID = LabelSmoother.ignore_index
 TOKENIZER_TO_SPECIAL_TOKEN = {
     transformers.LlamaTokenizer: "▁",
+    transformers.LlamaTokenizerFast: "▁",
     transformers.GPTNeoXTokenizerFast: "Ġ",
+    transformers.GPT2TokenizerFast: "Ġ",
 }
+
+
+def get_token_boundary_marker(tokenizer):
+    special = TOKENIZER_TO_SPECIAL_TOKEN.get(tokenizer.__class__)
+    if special is not None:
+        return special
+
+    # Fallback for newer tokenizers (for example Qwen family) not explicitly listed.
+    tokenizer_name = tokenizer.__class__.__name__.lower()
+    if "qwen" in tokenizer_name or "gpt2" in tokenizer_name:
+        return "Ġ"
+    if "llama" in tokenizer_name:
+        return "▁"
+
+    vocab_tokens = tokenizer.get_vocab().keys()
+    if any(token.startswith("▁") for token in vocab_tokens):
+        return "▁"
+    if any(token.startswith("Ġ") for token in vocab_tokens):
+        return "Ġ"
+
+    logger.warning(
+        "Could not infer token boundary marker for tokenizer %s. Falling back to empty marker.",
+        tokenizer.__class__.__name__,
+    )
+    return ""
 
 
 # get tokenizer
 def get_tokenizer(model_name_or_path, cache_dir, model_max_length):
     kwargs = {
-        "use_fast": False,
+        "use_fast": True,
         "tokenizer_trust_remote_code": False,
         "model_trust_remote_code": False,
     }
     if "llama" in model_name_or_path.lower():
-        kwargs["use_fast"] = False
+        kwargs["use_fast"] = True
         kwargs["tokenizer_trust_remote_code"] = False
         kwargs["model_trust_remote_code"] = False
     elif "mpt" in model_name_or_path.lower():
         kwargs["use_fast"] = True
         kwargs["tokenizer_trust_remote_code"] = True
         kwargs["model_trust_remote_code"] = True
-    else:
-        raise NotImplementedError
+    elif "qwen" in model_name_or_path.lower() or "smol" in model_name_or_path.lower():
+        kwargs["use_fast"] = True
+        kwargs["tokenizer_trust_remote_code"] = True
+        kwargs["model_trust_remote_code"] = True
     logger.info("Loading tokenizer.")
     tokenizer = transformers.AutoTokenizer.from_pretrained(
         model_name_or_path,
@@ -377,12 +406,8 @@ def transform_step_logits(
     blending_model_tokens = blending_model_tokenizer.convert_ids_to_tokens(
         blending_model_input_ids
     )
-    base_model_special_token = TOKENIZER_TO_SPECIAL_TOKEN[
-        base_model_tokenizer.__class__
-    ]
-    blending_model_special_token = TOKENIZER_TO_SPECIAL_TOKEN[
-        blending_model_tokenizer.__class__
-    ]
+    base_model_special_token = get_token_boundary_marker(base_model_tokenizer)
+    blending_model_special_token = get_token_boundary_marker(blending_model_tokenizer)
 
     def dist_fn(a, b):
         """Calculate editdistance between two tokens, a is from blending model, b is from base model."""

@@ -8,7 +8,7 @@ import editdistance
 import numpy as np
 import tqdm
 from datasets import DatasetDict, Features, load_dataset, load_from_disk
-from src.utils.others import TOKENIZER_TO_SPECIAL_TOKEN, get_logger, get_tokenizer
+from src.utils.others import get_logger, get_token_boundary_marker, get_tokenizer
 
 logger = get_logger(__name__)
 
@@ -74,10 +74,8 @@ if __name__ == "__main__":
 
     base_tokens = list(base_tokenizer.get_vocab().keys())
     blending_tokens = list(blending_tokenizer.get_vocab().keys())
-    base_model_special_token = TOKENIZER_TO_SPECIAL_TOKEN[base_tokenizer.__class__]
-    blending_model_special_token = TOKENIZER_TO_SPECIAL_TOKEN[
-        blending_tokenizer.__class__
-    ]
+    base_model_special_token = get_token_boundary_marker(base_tokenizer)
+    blending_model_special_token = get_token_boundary_marker(blending_tokenizer)
 
     def find_best_mapping(
         x,
