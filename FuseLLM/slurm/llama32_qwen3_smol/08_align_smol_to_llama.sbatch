@@ -2,7 +2,8 @@
 #SBATCH --job-name=fusellm-s4-align-smol
 #SBATCH --time=1-00:00:00
 #SBATCH --qos=cpu
-#SBATCH -w maia
+#SBATCH -p a6000
+#SBATCH -w artemis
 #SBATCH --cpus-per-task=12
 #SBATCH --mem=96G
 #SBATCH --array=0-7%1

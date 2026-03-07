@@ -29,41 +29,23 @@ Model roles in this setup:
 - `RAW_DATASET_DIR` (must be a `datasets.load_from_disk` directory)
 - `RUN_ROOT` / `CACHE_DIR` if needed
 - precision/worker defaults if needed:
-- `FORWARD_HALF_PRECISION` (default `fp16`)
+- `FORWARD_HALF_PRECISION` (default `bf16`)
+- `TRAIN_BF16`, `TRAIN_FP16`, `TRAIN_TF32`, `TRAIN_USE_FLASH_ATTN`
 - `PREPROC_WORKERS` and `FORWARD_PREPROC_WORKERS`
 
 2. Verify your cluster directives:
 - `--qos`
 - `--gres`
 - `--time`, `--mem`, `--cpus-per-task`
-- `-w` node pinning (current scripts pin to `maia`)
+- `-p a6000 -w artemis`
 
-Notes for mixed Turing GPUs (RTX 2080 Ti / Quadro RTX 6000):
-- Use FP16 rather than BF16.
-- FlashAttention is disabled in training script by default.
-- Training job is set to 2 GPUs by default (safer starting point).
-- CPU requests are capped for a 12-core node:
-- CPU-heavy single jobs use 12 CPUs.
-- Forward array jobs use 2 CPUs each with `%2` concurrency cap.
-- Alignment/packing arrays use `%1` (one task at a time) to avoid oversubscription.
-- CPU-only stages use `--qos=cpu`.
-- All stages pin node with `-w maia` to match non-shared filesystem guidance.
-
-## Pin training to Quadro GPUs
-
-Use `TRAIN_SBATCH_EXTRA` when launching the pipeline so only training job gets pinned:
-
-```bash
-TRAIN_SBATCH_EXTRA="--constraint=quadro --gres=gpu:2" ./submit_pipeline.sh
-```
-
-If your cluster uses typed GRES names, use your site-specific label, for example:
-
-```bash
-TRAIN_SBATCH_EXTRA="--gres=gpu:quadro_rtx_6000:2" ./submit_pipeline.sh
-```
-
-You can run `sinfo -o \"%N %G %f\"` or ask admins for the exact GPU type string.
+Notes for RTX A6000:
+- A6000 supports BF16, so forward passes now default to `bf16`.
+- Training now defaults to `--bf16 True --fp16 False --tf32 True`.
+- Training enables `--use_flash_attn True` by default for the Llama student model; set `TRAIN_USE_FLASH_ATTN=False` if `flash-attn` is not installed in your env.
+- Forward array jobs now use `%4`, so each forward stage can use up to 4 A6000s at once.
+- Training now requests 1 GPU because only the 1B student model is trained; the 1.7B teacher signals come from the packed dataset rather than loading both teacher models during training.
+- CPU-only stages still use `--qos=cpu`, but they are pinned to `artemis` to stay on the same node-local filesystem.
 
 3. Make scripts executable:
 
@@ -126,3 +108,9 @@ sbatch 10_train_fusellm.sbatch
 Recommended:
 - Wait for each stage to finish successfully before submitting the next stage.
 - Use `squeue -u $USER` and check `slurm-*.out` / `slurm-*.err` between stages.
+
+## GPU sizing
+
+- Forward logits jobs still need `1` GPU each. They load one model at a time (`Llama-3.2-1B`, `Qwen3-1.7B-Base`, or `SmolLM2-1.7B`), and even the 1.7B models are comfortable on a 46 GiB A6000 in BF16.
+- Training now needs `1` GPU rather than `2`. The student model is only `Llama-3.2-1B` (~1.86 GiB BF16 weights), and the packed dataset changes runtime/disk size rather than per-step GPU memory.
+- The expensive part of distillation during training is the dense target distributions. At sequence length `2048` and vocab size `128256`, one BF16 target distribution is about `0.49 GiB`; the base plus two aligned teacher distributions are about `1.47 GiB` total. Adding student logits, activations, gradients, and optimizer state still keeps this job well under a single 46 GiB A6000.

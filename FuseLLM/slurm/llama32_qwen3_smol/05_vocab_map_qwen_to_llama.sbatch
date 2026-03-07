@@ -2,7 +2,8 @@
 #SBATCH --job-name=fusellm-s3-vmap-qwen
 #SBATCH --time=0-10:00:00
 #SBATCH --qos=cpu
-#SBATCH -w maia
+#SBATCH -p a6000
+#SBATCH -w artemis
 #SBATCH --cpus-per-task=12
 #SBATCH --mem=128G
 #SBATCH --output=slurm-%j.out

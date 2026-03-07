@@ -2,11 +2,12 @@
 #SBATCH --job-name=fusellm-s2-smol
 #SBATCH --time=1-00:00:00
 #SBATCH --qos=gpu-medium
-#SBATCH -w maia
+#SBATCH -p a6000
+#SBATCH -w artemis
 #SBATCH --gres=gpu:1
 #SBATCH --cpus-per-task=2
 #SBATCH --mem=64G
-#SBATCH --array=0-7%2
+#SBATCH --array=0-7%4
 #SBATCH --output=slurm-%A_%a.out
 #SBATCH --error=slurm-%A_%a.err
 

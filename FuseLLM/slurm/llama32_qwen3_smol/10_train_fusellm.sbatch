@@ -2,8 +2,9 @@
 #SBATCH --job-name=fusellm-s6-train
 #SBATCH --time=2-00:00:00
 #SBATCH --qos=gpu-medium
-#SBATCH -w maia
-#SBATCH --gres=gpu:2
+#SBATCH -p a6000
+#SBATCH -w artemis
+#SBATCH --gres=gpu:1
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=140G
 #SBATCH --output=slurm-%j.out
@@ -40,14 +41,14 @@ deepspeed --master_port "${MASTER_PORT}" ./src/train.py \
   --logging_strategy steps \
   --do_train \
   --do_eval \
-  --bf16 False \
-  --fp16 True \
-  --tf32 False \
+  --bf16 "${TRAIN_BF16}" \
+  --fp16 "${TRAIN_FP16}" \
+  --tf32 "${TRAIN_TF32}" \
   --warmup_ratio 0.008 \
   --lr_scheduler_type cosine \
   --dataset_name "${DATASET_NAME}" \
-  --per_device_train_batch_size 1 \
-  --gradient_accumulation_steps 16 \
+  --per_device_train_batch_size "${TRAIN_PER_DEVICE_BATCH_SIZE}" \
+  --gradient_accumulation_steps "${TRAIN_GRADIENT_ACCUMULATION_STEPS}" \
   --num_train_epochs 1 \
   --eval_steps 500 \
   --optim adamw_torch \
@@ -58,7 +59,7 @@ deepspeed --master_port "${MASTER_PORT}" ./src/train.py \
   --max_grad_norm 1.0 \
   --seed 42 \
   --gradient_checkpointing True \
-  --use_flash_attn False \
+  --use_flash_attn "${TRAIN_USE_FLASH_ATTN}" \
   --report_to tensorboard \
   --do_distill \
   --distill_with_ref_model True \

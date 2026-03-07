@@ -5,9 +5,8 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "${SCRIPT_DIR}"
 
 # Optional extra sbatch flags for training job only.
-# Examples:
-#   TRAIN_SBATCH_EXTRA="--gres=gpu:quadro_rtx_6000:2"
-#   TRAIN_SBATCH_EXTRA="--constraint=quadro --gres=gpu:2"
+# Example:
+#   TRAIN_SBATCH_EXTRA="--qos=gpu-long"
 TRAIN_SBATCH_EXTRA="${TRAIN_SBATCH_EXTRA:-}"
 
 jid_split=$(sbatch 01_split_long_text.sbatch | awk '{print $4}')
