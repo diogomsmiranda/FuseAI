@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name=fusellm-s2-llama
-#SBATCH --time=1-00:00:00
+#SBATCH --time=0-12:00:00
 #SBATCH --qos=gpu-medium
 #SBATCH -p a6000
 #SBATCH -w artemis

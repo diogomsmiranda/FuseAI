@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name=fusellm-s3-vmap-qwen
-#SBATCH --time=0-10:00:00
+#SBATCH --time=0-4:00:00
 #SBATCH --qos=cpu
 #SBATCH -p a6000
 #SBATCH -w artemis

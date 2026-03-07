@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name=fusellm-s4-align-qwen
-#SBATCH --time=1-00:00:00
+#SBATCH --time=0-12:00:00
 #SBATCH --qos=cpu
 #SBATCH -p a6000
 #SBATCH -w artemis
