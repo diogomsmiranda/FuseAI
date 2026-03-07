@@ -7,12 +7,12 @@
 #SBATCH --cpus-per-task=12
 #SBATCH --mem=96G
 #SBATCH --array=0-7%1
-#SBATCH --output=slurm-%A_%a.out
-#SBATCH --error=slurm-%A_%a.err
+#SBATCH --output=/mnt/home/diogomiranda/FuseAI/FuseLLM/slurm/llama32_qwen3_smol/outputs/slurm_pack_features-%A_%a.out
+#SBATCH --error=/mnt/home/diogomiranda/FuseAI/FuseLLM/slurm/llama32_qwen3_smol/errors/slurm_pack_features-%A_%a.err
 
 set -euo pipefail
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SCRIPT_DIR="${SLURM_SUBMIT_DIR:-$(pwd)}"
 source "${SCRIPT_DIR}/00_env.sh"
 
 module load "${PYTHON_MODULE}"

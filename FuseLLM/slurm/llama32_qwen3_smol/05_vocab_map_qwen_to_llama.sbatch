@@ -6,12 +6,12 @@
 #SBATCH -w artemis
 #SBATCH --cpus-per-task=12
 #SBATCH --mem=128G
-#SBATCH --output=slurm-%j.out
-#SBATCH --error=slurm-%j.err
+#SBATCH --output=/mnt/home/diogomiranda/FuseAI/FuseLLM/slurm/llama32_qwen3_smol/outputs/slurm_vocab_map_qwen_to_llama-%j.out
+#SBATCH --error=/mnt/home/diogomiranda/FuseAI/FuseLLM/slurm/llama32_qwen3_smol/errors/slurm_vocab_map_qwen_to_llama-%j.err
 
 set -euo pipefail
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SCRIPT_DIR="${SLURM_SUBMIT_DIR:-$(pwd)}"
 source "${SCRIPT_DIR}/00_env.sh"
 
 module load "${PYTHON_MODULE}"
