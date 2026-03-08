@@ -14,4 +14,4 @@ export MODEL_NAME="qwen3-1p7b-base"
 export MODEL_PATH="/mnt/scratch-artemis/diogomiranda/Qwen/Qwen3-1.7B-Base"
 export USE_CHAT_TEMPLATE="False"
 
-"${SLURM_SUBMIT_DIR:-$(pwd)}"/run_lm_eval.sh
+bash "${SLURM_SUBMIT_DIR:-$(pwd)}/run_lm_eval.sh"

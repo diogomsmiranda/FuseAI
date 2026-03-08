@@ -14,4 +14,4 @@ export MODEL_NAME="smollm2-1p7b"
 export MODEL_PATH="/mnt/scratch-artemis/diogomiranda/SmolLM2-1.7B"
 export USE_CHAT_TEMPLATE="False"
 
-"${SLURM_SUBMIT_DIR:-$(pwd)}"/run_lm_eval.sh
+bash "${SLURM_SUBMIT_DIR:-$(pwd)}/run_lm_eval.sh"

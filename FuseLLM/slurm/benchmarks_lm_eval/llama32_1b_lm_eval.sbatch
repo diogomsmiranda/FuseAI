@@ -14,4 +14,4 @@ export MODEL_NAME="llama32-1b"
 export MODEL_PATH="/mnt/scratch-artemis/diogomiranda/Llama-3.2-1B"
 export USE_CHAT_TEMPLATE="False"
 
-"${SLURM_SUBMIT_DIR:-$(pwd)}"/run_lm_eval.sh
+bash "${SLURM_SUBMIT_DIR:-$(pwd)}/run_lm_eval.sh"
