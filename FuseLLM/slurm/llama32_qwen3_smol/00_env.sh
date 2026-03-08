@@ -3,7 +3,7 @@
 # Override any variable before sbatch if needed, for example:
 #   RAW_DATASET_DIR=/mnt/scratch-artemis/diogomiranda/datasets/minipile_disk sbatch 01_split_long_text.sbatch
 
-export PROJECT_ROOT="${PROJECT_ROOT:-/home/diogomiranda/FuseAI/FuseLLM}"
+export PROJECT_ROOT="${PROJECT_ROOT:-/mnt/home/diogomiranda/FuseAI/FuseLLM}"
 export VENV_PATH="${VENV_PATH:-/mnt/home/diogomiranda/mopd}"
 export PYTHON_MODULE="${PYTHON_MODULE:-python/3.10.14}"
 
