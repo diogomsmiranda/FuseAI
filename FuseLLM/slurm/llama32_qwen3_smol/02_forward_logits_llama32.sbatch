@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=fusellm-s2-llama
-#SBATCH --time=2-00:00:00
-#SBATCH --qos=gpu-medium
+#SBATCH --time=3-00:00:00
+#SBATCH --qos=gpu-long
 #SBATCH -p a6000
 #SBATCH -w artemis
 #SBATCH --gres=gpu:1
