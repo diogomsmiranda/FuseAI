@@ -48,6 +48,7 @@ export TRAIN_OUTPUT_DIR="${RUN_ROOT}/05_fusellm_llama32_qwen3_smol"
 export LOG_DIR="${RUN_ROOT}/logs"
 
 export MASTER_PORT="${MASTER_PORT:-20001}"
+export PYTHONPATH="${PROJECT_ROOT}:${PYTHONPATH:-}"
 
 mkdir -p "${RUN_ROOT}" "${CACHE_DIR}" "${LOG_DIR}" "${TRAIN_OUTPUT_DIR}"
 
