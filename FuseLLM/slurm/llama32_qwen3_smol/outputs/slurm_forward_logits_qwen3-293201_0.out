@@ -1,0 +1,10 @@
+03/08/2026 12:37:37 - INFO - __main__ - Data processing args: Namespace(model_name_or_path='/mnt/scratch-artemis/diogomiranda/Qwen/Qwen3-1.7B-Base', dataset='/mnt/scratch-artemis/diogomiranda/fusellm_llama32_qwen3_smol/01_minipile_split', dataset_save_dir='0_8_/mnt/scratch-artemis/diogomiranda/fusellm_llama32_qwen3_smol/02_logits_qwen3_1p7b', dataset_sample_prop=None, dataset_split_num=8, dataset_index=0, cache_dir='/mnt/scratch-artemis/diogomiranda/hf_cache', model_max_length=2048, training_mode='full', load_in_half='bf16', batch_size=16, preprocessing_num_workers=2, top_k_logits=10, save_per_token_metric=True, no_assert=False)
+03/08/2026 12:37:38 - INFO - __main__ - Split num: 8; Split index: 0.
+03/08/2026 12:37:38 - INFO - __main__ - train: start_index: 0, end_index: 187957, select_size: 187957
+03/08/2026 12:37:38 - INFO - __main__ - validation: start_index: 0, end_index: 90, select_size: 90
+03/08/2026 12:37:38 - INFO - __main__ - test: start_index: 0, end_index: 1858, select_size: 1858
+03/08/2026 12:37:38 - INFO - src.utils.others - Loading tokenizer.
+03/08/2026 12:37:38 - INFO - src.utils.others - bos_token: None, None eos_token: <|endoftext|>, 151643 unk_token: None, None pad_token: <|endoftext|>, 151643 
+03/08/2026 12:43:17 - INFO - src.utils.others - Loading tokenizer.
+03/08/2026 12:43:17 - INFO - src.utils.others - bos_token: None, None eos_token: <|endoftext|>, 151643 unk_token: None, None pad_token: <|endoftext|>, 151643 
+03/08/2026 12:43:17 - INFO - src.utils.others - Loading base model.
