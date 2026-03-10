@@ -6,7 +6,7 @@
 #SBATCH -w artemis
 #SBATCH --cpus-per-task=12
 #SBATCH --mem=96G
-#SBATCH --array=0-7%1
+#SBATCH --array=0-15%1
 #SBATCH --output=/mnt/home/diogomiranda/FuseAI/FuseLLM/slurm/llama32_qwen3_smol/outputs/slurm_pack_features-%A_%a.out
 #SBATCH --error=/mnt/home/diogomiranda/FuseAI/FuseLLM/slurm/llama32_qwen3_smol/errors/slurm_pack_features-%A_%a.err
 

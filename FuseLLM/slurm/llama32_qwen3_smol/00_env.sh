@@ -17,10 +17,10 @@ export RAW_DATASET_DIR="${RAW_DATASET_DIR:-/mnt/scratch-artemis/diogomiranda/dat
 export RUN_ROOT="${RUN_ROOT:-/mnt/scratch-artemis/diogomiranda/fusellm_llama32_qwen3_smol}"
 export CACHE_DIR="${CACHE_DIR:-/mnt/scratch-artemis/diogomiranda/hf_cache}"
 
-export NUM_SPLITS="${NUM_SPLITS:-8}"
+export NUM_SPLITS="${NUM_SPLITS:-16}"
 export MODEL_MAX_LENGTH="${MODEL_MAX_LENGTH:-2048}"
 export PREPROC_WORKERS="${PREPROC_WORKERS:-12}"
-export FORWARD_PREPROC_WORKERS="${FORWARD_PREPROC_WORKERS:-2}"
+export FORWARD_PREPROC_WORKERS="${FORWARD_PREPROC_WORKERS:-4}"
 export FORWARD_BATCH_SIZE="${FORWARD_BATCH_SIZE:-16}"
 export FORWARD_HALF_PRECISION="${FORWARD_HALF_PRECISION:-bf16}"
 export TOP_K_LOGITS="${TOP_K_LOGITS:-10}"

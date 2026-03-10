@@ -1,13 +1,13 @@
 #!/bin/bash
 #SBATCH --job-name=fusellm-s2-llama
-#SBATCH --time=3-00:00:00
-#SBATCH --qos=gpu-long
+#SBATCH --time=2-00:00:00
+#SBATCH --qos=gpu-medium
 #SBATCH -p a6000
 #SBATCH -w artemis
 #SBATCH --gres=gpu:1
-#SBATCH --cpus-per-task=2
+#SBATCH --cpus-per-task=4
 #SBATCH --mem=64G
-#SBATCH --array=0-7%4
+#SBATCH --array=0-15%4
 #SBATCH --output=/mnt/home/diogomiranda/FuseAI/FuseLLM/slurm/llama32_qwen3_smol/outputs/slurm_forward_logits_llama32-%A_%a.out
 #SBATCH --error=/mnt/home/diogomiranda/FuseAI/FuseLLM/slurm/llama32_qwen3_smol/errors/slurm_forward_logits_llama32-%A_%a.err
 
