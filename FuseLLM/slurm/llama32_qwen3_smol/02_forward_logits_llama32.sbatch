@@ -3,7 +3,6 @@
 #SBATCH --time=2-00:00:00
 #SBATCH --qos=gpu-medium
 #SBATCH -p a6000
-#SBATCH -w artemis
 #SBATCH --gres=gpu:1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=64G
