@@ -22,7 +22,7 @@ cd "${PROJECT_ROOT}"
 
 DATASET_LIST=()
 for i in $(seq 0 $((NUM_SPLITS - 1))); do
-  DATASET_LIST+=("${i}_${NUM_SPLITS}_${PACKED_PREFIX}")
+  DATASET_LIST+=("${PACKED_PREFIX}_${i}_${NUM_SPLITS}")
 done
 DATASET_NAME=$(IFS=, ; echo "${DATASET_LIST[*]}")
 

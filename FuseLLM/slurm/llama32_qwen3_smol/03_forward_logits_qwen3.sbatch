@@ -25,7 +25,7 @@ IDX="${SLURM_ARRAY_TASK_ID}"
 python ./src/utils/forward_for_logits.py \
   --model_name_or_path "${BLEND_MODEL_0}" \
   --dataset "${SPLIT_DATASET_DIR}" \
-  --dataset_save_dir "${IDX}_${NUM_SPLITS}_${LOGITS_BLEND0_PREFIX}" \
+  --dataset_save_dir "${LOGITS_BLEND0_PREFIX}_${IDX}_${NUM_SPLITS}" \
   --dataset_split_num "${NUM_SPLITS}" \
   --dataset_index "${IDX}" \
   --cache_dir "${CACHE_DIR}" \

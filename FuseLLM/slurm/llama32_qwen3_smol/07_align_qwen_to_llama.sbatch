@@ -25,9 +25,9 @@ IDX="${SLURM_ARRAY_TASK_ID}"
 python ./src/utils/token_alignment.py \
   --base_model_name_or_path "${BASE_MODEL}" \
   --blending_model_name_or_path "${BLEND_MODEL_0}" \
-  --base_dataset_dir "${IDX}_${NUM_SPLITS}_${LOGITS_BASE_PREFIX}" \
-  --blending_dataset_dir "${IDX}_${NUM_SPLITS}_${LOGITS_BLEND0_PREFIX}" \
-  --dataset_save_dir "${IDX}_${NUM_SPLITS}_${ALIGNED_0_PREFIX}" \
+  --base_dataset_dir "${LOGITS_BASE_PREFIX}_${IDX}_${NUM_SPLITS}" \
+  --blending_dataset_dir "${LOGITS_BLEND0_PREFIX}_${IDX}_${NUM_SPLITS}" \
+  --dataset_save_dir "${ALIGNED_0_PREFIX}_${IDX}_${NUM_SPLITS}" \
   --cache_dir "${CACHE_DIR}" \
   --model_max_length "${MODEL_MAX_LENGTH}" \
   --preprocessing_num_workers "${PREPROC_WORKERS}" \

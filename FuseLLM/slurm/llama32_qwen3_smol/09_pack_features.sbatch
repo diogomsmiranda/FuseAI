@@ -23,8 +23,8 @@ cd "${PROJECT_ROOT}"
 IDX="${SLURM_ARRAY_TASK_ID}"
 
 python ./src/utils/packing.py \
-  --dataset_dir "${IDX}_${NUM_SPLITS}_${ALIGNED_1_PREFIX}" \
-  --dataset_save_dir "${IDX}_${NUM_SPLITS}_${PACKED_PREFIX}" \
+  --dataset_dir "${ALIGNED_1_PREFIX}_${IDX}_${NUM_SPLITS}" \
+  --dataset_save_dir "${PACKED_PREFIX}_${IDX}_${NUM_SPLITS}" \
   --cache_dir "${CACHE_DIR}" \
   --model_max_length "${MODEL_MAX_LENGTH}" \
   --preprocessing_num_workers "${PREPROC_WORKERS}" \
