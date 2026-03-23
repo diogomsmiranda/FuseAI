@@ -19,6 +19,14 @@ mkdir -p /mnt/home/diogomiranda/FuseAI/FuseLLM/slurm/benchmarks_lm_eval/errors
 
 Then submit any model job manually with `sbatch`.
 
+Merged-model benchmark jobs are also available for:
+
+- `qwen2p5_linear_equal_lm_eval.sbatch`
+- `qwen2p5_task_arithmetic_lm_eval.sbatch`
+- `qwen2p5_ties_lm_eval.sbatch`
+- `qwen2p5_dare_linear_lm_eval.sbatch`
+- `qwen2p5_dare_ties_lm_eval.sbatch`
+
 Notes:
 
 - The scripts default to `/mnt/home/diogomiranda/.venv` to match your existing `lm_eval` setup.
