@@ -4,10 +4,23 @@
 #SBATCH --qos=cpu
 #SBATCH -p a6000
 #SBATCH -w artemis
-#SBATCH --cpus-per-task=12
+#SBATCH --cpus-per-task=16
 #SBATCH --mem=128G
 #SBATCH --output=/mnt/home/diogomiranda/FuseAI/FuseLLM/slurm/llama32_qwen3_smol/outputs/slurm_vocab_map_smol_to_llama-%j.out
 #SBATCH --error=/mnt/home/diogomiranda/FuseAI/FuseLLM/slurm/llama32_qwen3_smol/errors/slurm_vocab_map_smol_to_llama-%j.err
+
+mkdir -p /mnt/scratch-$HOSTNAME/$USER/.cache
+mkdir -p /mnt/scratch-$HOSTNAME/$USER/.venvs
+mkdir -p /mnt/scratch-$HOSTNAME/$USER/.hf
+mkdir -p /mnt/scratch-$HOSTNAME/$USER/.torch
+mkdir -p /mnt/scratch-$HOSTNAME/$USER/.conda
+
+export XDG_CACHE_HOME=/mnt/scratch-$HOSTNAME/$USER/.cache
+export HF_HOME=/mnt/scratch-$HOSTNAME/$USER/.hf
+export HF_DATASETS_CACHE=/mnt/scratch-$HOSTNAME/$USER/.hf/datasets
+export TORCH_HOME=/mnt/scratch-$HOSTNAME/$USER/.torch
+export PIP_CACHE_DIR=/mnt/scratch-$HOSTNAME/$USER/.cache/pip
+export CONDA_PKGS_DIRS=/mnt/scratch-$HOSTNAME/$USER/.conda/pkg
 
 set -euo pipefail
 
