@@ -106,7 +106,7 @@ if __name__ == "__main__":
     if args.vocab_mapping_type == "default":
         blending_to_base_mapping = dict()
 
-        with multiprocessing.Pool(64) as pool:
+        with multiprocessing.Pool(args.num_process) as pool:
             mapping_args = [
                 (x, base_tokens, blending_model_special_token, base_model_special_token)
                 for x in blending_tokens
@@ -129,7 +129,7 @@ if __name__ == "__main__":
         # 1. Calculate basic one-to-many mapping based on editdistance
         blending_to_base_mapping = dict()
 
-        with multiprocessing.Pool(64) as pool:
+        with multiprocessing.Pool(args.num_process) as pool:
             mapping_args = [
                 (x, base_tokens, blending_model_special_token, base_model_special_token)
                 for x in blending_tokens
@@ -145,7 +145,7 @@ if __name__ == "__main__":
             blending_to_base_mapping[tmp_x] = best_mapping
 
         most_sim_blending_to_base_mapping = dict()
-        with multiprocessing.Pool(64) as pool:
+        with multiprocessing.Pool(args.num_process) as pool:
             mapping_args = [
                 (
                     x,
