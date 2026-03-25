@@ -187,7 +187,7 @@ if __name__ == "__main__":
             remove_columns=["text"]
             if "text" in base_model_logits_datasets[k].column_names
             else None,
-            keep_in_memory=True,
+            keep_in_memory=False,
             desc="Align blending model's logits with base model's logits.",
         )
     base_model_blending_model_logits_datasets.save_to_disk(args.dataset_save_dir)
