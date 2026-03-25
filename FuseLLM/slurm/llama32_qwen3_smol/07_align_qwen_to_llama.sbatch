@@ -1,11 +1,10 @@
 #!/bin/bash
 #SBATCH --job-name=fusellm-s4-align-qwen
-#SBATCH --time=0-12:00:00
 #SBATCH --qos=cpu
 #SBATCH -p a6000
 #SBATCH -w artemis
-#SBATCH --cpus-per-task=32
-#SBATCH --mem=96G
+#SBATCH --cpus-per-task=16
+#SBATCH --mem=128G
 #SBATCH --array=0-15%1
 #SBATCH --output=/mnt/home/diogomiranda/FuseAI/FuseLLM/slurm/llama32_qwen3_smol/outputs/slurm_align_qwen_to_llama-%A_%a.out
 #SBATCH --error=/mnt/home/diogomiranda/FuseAI/FuseLLM/slurm/llama32_qwen3_smol/errors/slurm_align_qwen_to_llama-%A_%a.err

@@ -10,6 +10,19 @@
 #SBATCH --output=/mnt/home/diogomiranda/FuseAI/FuseLLM/slurm/llama32_qwen3_smol/outputs/slurm_train_fusellm-%j.out
 #SBATCH --error=/mnt/home/diogomiranda/FuseAI/FuseLLM/slurm/llama32_qwen3_smol/errors/slurm_train_fusellm-%j.err
 
+mkdir -p /mnt/scratch-$HOSTNAME/$USER/.cache
+mkdir -p /mnt/scratch-$HOSTNAME/$USER/.venvs
+mkdir -p /mnt/scratch-$HOSTNAME/$USER/.hf
+mkdir -p /mnt/scratch-$HOSTNAME/$USER/.torch
+mkdir -p /mnt/scratch-$HOSTNAME/$USER/.conda
+
+export XDG_CACHE_HOME=/mnt/scratch-$HOSTNAME/$USER/.cache
+export HF_HOME=/mnt/scratch-$HOSTNAME/$USER/.hf
+export HF_DATASETS_CACHE=/mnt/scratch-$HOSTNAME/$USER/.hf/datasets
+export TORCH_HOME=/mnt/scratch-$HOSTNAME/$USER/.torch
+export PIP_CACHE_DIR=/mnt/scratch-$HOSTNAME/$USER/.cache/pip
+export CONDA_PKGS_DIRS=/mnt/scratch-$HOSTNAME/$USER/.conda/pkg
+
 set -euo pipefail
 
 SCRIPT_DIR="${SLURM_SUBMIT_DIR:-$(pwd)}"
