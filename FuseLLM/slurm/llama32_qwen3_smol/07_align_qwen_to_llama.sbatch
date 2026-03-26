@@ -14,7 +14,9 @@ mkdir -p /mnt/scratch-$HOSTNAME/$USER/.venvs
 mkdir -p /mnt/scratch-$HOSTNAME/$USER/.hf
 mkdir -p /mnt/scratch-$HOSTNAME/$USER/.torch
 mkdir -p /mnt/scratch-$HOSTNAME/$USER/.conda
+mkdir -p /mnt/scratch-$HOSTNAME/$USER/tmp
 
+export TMPDIR=/mnt/scratch-$HOSTNAME/$USER/tmp
 export XDG_CACHE_HOME=/mnt/scratch-$HOSTNAME/$USER/.cache
 export HF_HOME=/mnt/scratch-$HOSTNAME/$USER/.hf
 export HF_DATASETS_CACHE=/mnt/scratch-$HOSTNAME/$USER/.hf/datasets
