@@ -110,7 +110,7 @@ if __name__ == "__main__":
         batch_size=args.batch_size,
         num_proc=args.preprocessing_num_workers,
         load_from_cache_file=True,
-        keep_in_memory=True,
+        keep_in_memory=False,
         desc="Packing all features in dataset.",
     )
 

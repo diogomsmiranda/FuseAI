@@ -43,7 +43,7 @@ python ./src/utils/packing.py \
   --cache_dir "${CACHE_DIR}" \
   --model_max_length "${MODEL_MAX_LENGTH}" \
   --preprocessing_num_workers "${PREPROC_WORKERS}" \
-  --batch_size 1000 \
+  --batch_size 100 \
   --metric_level sequence
 
 deactivate
