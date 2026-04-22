@@ -94,7 +94,7 @@ deepspeed --master_port "${MASTER_PORT}" ./src/train.py \
   --lm_loss_weight 0.9 \
   --distill_greater_as_gt True \
   --distill_greater_as_gt_type hard \
-  --dataloader_num_workers 10 \
+  --dataloader_num_workers 8 \
   --remove_unused_columns False 2>&1 | tee "${LOG_DIR}/train.log"
 
 deactivate
