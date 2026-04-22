@@ -33,6 +33,8 @@ export PATH="$CUDA_HOME/bin:$PATH"
 export LD_LIBRARY_PATH="$CUDA_HOME/lib64:${LD_LIBRARY_PATH:-}"
 export TRITON_CACHE_DIR=/mnt/scratch-$HOSTNAME/$USER/.triton
 
+export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True # pytorch memory management 
+
 set -euo pipefail
 
 SCRIPT_DIR="${SLURM_SUBMIT_DIR:-$(pwd)}"
