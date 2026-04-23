@@ -4,8 +4,8 @@
 #SBATCH --qos=gpu-h100
 #SBATCH -p h100
 #SBATCH -w dionysus
-#SBATCH --gres=gpu:1
-#SBATCH --cpus-per-task=8
+#SBATCH --gres=gpu:4
+#SBATCH --cpus-per-task=16
 #SBATCH --mem=140G
 #SBATCH --output=/mnt/home/diogomiranda/FuseAI/FuseLLM/slurm/llama32_qwen3_smol/outputs/slurm_train_fusellm-%j.out
 #SBATCH --error=/mnt/home/diogomiranda/FuseAI/FuseLLM/slurm/llama32_qwen3_smol/errors/slurm_train_fusellm-%j.err
