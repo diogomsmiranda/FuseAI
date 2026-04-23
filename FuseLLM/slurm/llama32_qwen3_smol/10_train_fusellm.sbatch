@@ -59,7 +59,7 @@ deepspeed --master_port "${MASTER_PORT}" ./src/train.py \
   --model_name_or_path "${BASE_MODEL}" \
   --output_dir "${TRAIN_OUTPUT_DIR}" \
   --model_max_length "${MODEL_MAX_LENGTH}" \
-  --logging_steps 1 \
+  --logging_steps 10 \
   --save_strategy steps \
   --save_steps 500 \
   --save_total_limit 1 \
