@@ -16,7 +16,7 @@ mkdir -p /mnt/scratch-$HOSTNAME/$USER/.hf
 mkdir -p /mnt/scratch-$HOSTNAME/$USER/.torch
 mkdir -p /mnt/scratch-$HOSTNAME/$USER/.conda
 mkdir -p /mnt/scratch-$HOSTNAME/$USER/tmp
-mkdir -p /mnt/scratch-$HOSTNAME/$USER/mlruns
+mkdir -p /mnt/scratch-$HOSTNAME/$USER/wandb
 mkdir -p /mnt/scratch-$HOSTNAME/$USER/.triton/autotune
 
 export TMPDIR=/mnt/scratch-$HOSTNAME/$USER/tmp
@@ -26,8 +26,9 @@ export HF_DATASETS_CACHE=/mnt/scratch-$HOSTNAME/$USER/.hf/datasets
 export TORCH_HOME=/mnt/scratch-$HOSTNAME/$USER/.torch
 export PIP_CACHE_DIR=/mnt/scratch-$HOSTNAME/$USER/.cache/pip
 export CONDA_PKGS_DIRS=/mnt/scratch-$HOSTNAME/$USER/.conda/pkg
-export MLFLOW_TRACKING_URI="file:/mnt/scratch-$HOSTNAME/$USER/mlruns"
-export MLFLOW_EXPERIMENT_NAME="fusellm-llama32-qwen3-smol"
+export WANDB_PROJECT="fusellm-llama32-qwen3-smol"
+export WANDB_NAME="fusellm-lr1e5-bs${TRAIN_PER_DEVICE_BATCH_SIZE}-ga${TRAIN_GRADIENT_ACCUMULATION_STEPS}-len${MODEL_MAX_LENGTH}-job${SLURM_JOB_ID}"
+export WANDB_DIR=/mnt/scratch-$HOSTNAME/$USER/wandb
 export CUDA_HOME="$(dirname "$(dirname "$(readlink -f "$(which nvcc)")")")"
 export PATH="$CUDA_HOME/bin:$PATH"
 export LD_LIBRARY_PATH="$CUDA_HOME/lib64:${LD_LIBRARY_PATH:-}"
@@ -86,7 +87,7 @@ deepspeed --master_port "${MASTER_PORT}" ./src/train.py \
   --seed 42 \
   --gradient_checkpointing True \
   --use_flash_attn "${TRAIN_USE_FLASH_ATTN}" \
-  --report_to mlflow \
+  --report_to wandb \
   --do_distill \
   --distill_with_ref_model True \
   --distill_with_aligned_model_0 True \
