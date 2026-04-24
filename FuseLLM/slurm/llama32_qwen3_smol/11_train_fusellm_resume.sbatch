@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=fusellm-s6-train
+#SBATCH --job-name=fusellm-s6-train-resume
 #SBATCH --time=2-00:00:00
 #SBATCH --qos=gpu-h100
 #SBATCH -p h100
@@ -7,8 +7,8 @@
 #SBATCH --gres=gpu:4
 #SBATCH --cpus-per-task=16
 #SBATCH --mem=140G
-#SBATCH --output=/mnt/home/diogomiranda/FuseAI/FuseLLM/slurm/llama32_qwen3_smol/outputs/slurm_train_fusellm-%j.out
-#SBATCH --error=/mnt/home/diogomiranda/FuseAI/FuseLLM/slurm/llama32_qwen3_smol/errors/slurm_train_fusellm-%j.err
+#SBATCH --output=/mnt/home/diogomiranda/FuseAI/FuseLLM/slurm/llama32_qwen3_smol/outputs/slurm_train_fusellm_resume-%j.out
+#SBATCH --error=/mnt/home/diogomiranda/FuseAI/FuseLLM/slurm/llama32_qwen3_smol/errors/slurm_train_fusellm_resume-%j.err
 
 mkdir -p /mnt/scratch-$HOSTNAME/$USER/.cache
 mkdir -p /mnt/scratch-$HOSTNAME/$USER/.venvs
@@ -31,7 +31,7 @@ export PATH="$CUDA_HOME/bin:$PATH"
 export LD_LIBRARY_PATH="$CUDA_HOME/lib64:${LD_LIBRARY_PATH:-}"
 export TRITON_CACHE_DIR=/mnt/scratch-$HOSTNAME/$USER/.triton
 
-export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True # pytorch memory management 
+export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 
 set -euo pipefail
 
@@ -101,6 +101,6 @@ deepspeed --master_port "${MASTER_PORT}" ./src/train.py \
   --distill_greater_as_gt True \
   --distill_greater_as_gt_type hard \
   --dataloader_num_workers 8 \
-  --remove_unused_columns False 2>&1 | tee "${LOG_DIR}/train.log"
+  --remove_unused_columns False 2>&1 | tee "${LOG_DIR}/train_resume.log"
 
 deactivate
