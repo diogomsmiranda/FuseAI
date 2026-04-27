@@ -4,7 +4,7 @@
 #SBATCH --qos=gpu-h100
 #SBATCH -p h100
 #SBATCH -w dionysus
-#SBATCH --gres=gpu:4
+#SBATCH --gres=gpu:2
 #SBATCH --cpus-per-task=16
 #SBATCH --mem=256G
 #SBATCH --output=/mnt/home/diogomiranda/FuseAI/FuseLLM/slurm/llama32_qwen3_smol/outputs/slurm_train_fusellm-%j.out
