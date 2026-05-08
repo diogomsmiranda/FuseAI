@@ -58,7 +58,7 @@ DATASET_NAME=$(IFS=, ; echo "${DATASET_LIST[*]}")
 
 deepspeed --master_port "${MASTER_PORT}" ./src/train.py \
   --training_mode full \
-  --deepspeed ./config/zero_stage2_config.json \
+  --deepspeed ./config/zero_stage3_config.json \
   --model_name_or_path "${BASE_MODEL}" \
   --output_dir "${TRAIN_OUTPUT_DIR}" \
   --model_max_length "${MODEL_MAX_LENGTH}" \
