@@ -16,6 +16,11 @@ logger = get_logger(__name__)
 
 
 @dataclass
+class CpuOnlyTensor:
+    tensor: torch.Tensor
+
+
+@dataclass
 class DataCollatorForSeq2Seq:
     """
     Data collator that will dynamically pad the inputs received, as well as the labels.
@@ -355,15 +360,15 @@ class DataCollatorForDistill:
             features.pop("per_step_aligned_indices_1")
 
         if self.training_args.distill_with_ref_model is True:
-            features["base_target_dist"] = base_target_dist
+            features["base_target_dist"] = CpuOnlyTensor(base_target_dist)
         else:
             features.pop("metric_ce")
         if aligned_target_dist_0 is not None:
-            features["aligned_target_dist_0"] = aligned_target_dist_0
+            features["aligned_target_dist_0"] = CpuOnlyTensor(aligned_target_dist_0)
         elif "metric_ce_aligned_0" in features:
             features.pop("metric_ce_aligned_0")
         if aligned_target_dist_1 is not None:
-            features["aligned_target_dist_1"] = aligned_target_dist_1
+            features["aligned_target_dist_1"] = CpuOnlyTensor(aligned_target_dist_1)
         elif "metric_ce_aligned_1" in features:
             features.pop("metric_ce_aligned_1")
         return features

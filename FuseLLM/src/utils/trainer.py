@@ -14,6 +14,7 @@ from transformers import Seq2SeqTrainer
 from transformers.modeling_utils import unwrap_model
 from transformers.models.auto.modeling_auto import MODEL_FOR_CAUSAL_LM_MAPPING_NAMES
 
+from .data_collator import CpuOnlyTensor
 from .others import get_logger
 
 logger = get_logger(__name__)
@@ -50,6 +51,16 @@ class DistillTrainer(Seq2SeqTrainer):
             aligned_target_dist_1 = None
             aligned_metric_1 = None
         outputs = model(**inputs)
+        if isinstance(base_target_dist, CpuOnlyTensor):
+            base_target_dist = base_target_dist.tensor.to(outputs["logits"].device)
+        if isinstance(aligned_target_dist_0, CpuOnlyTensor):
+            aligned_target_dist_0 = aligned_target_dist_0.tensor.to(
+                outputs["logits"].device
+            )
+        if isinstance(aligned_target_dist_1, CpuOnlyTensor):
+            aligned_target_dist_1 = aligned_target_dist_1.tensor.to(
+                outputs["logits"].device
+            )
         # Save past state if it exists
         # TODO: this needs to be fixed and made cleaner later.
         if self.args.past_index >= 0:
