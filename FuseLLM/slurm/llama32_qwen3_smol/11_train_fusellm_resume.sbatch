@@ -19,6 +19,8 @@ mkdir -p /mnt/scratch-$HOSTNAME/$USER/tmp
 mkdir -p /mnt/scratch-$HOSTNAME/$USER/wandb
 mkdir -p /mnt/scratch-$HOSTNAME/$USER/.triton/autotune
 
+module load cuda
+
 export TMPDIR=/mnt/scratch-$HOSTNAME/$USER/tmp
 export XDG_CACHE_HOME=/mnt/scratch-$HOSTNAME/$USER/.cache
 export HF_HOME=/mnt/scratch-$HOSTNAME/$USER/.hf
@@ -44,7 +46,6 @@ export WANDB_DIR=/mnt/scratch-$HOSTNAME/$USER/wandb
 export WANDB_RUN_ID="fusellm-default-run"
 export WANDB_RESUME="allow"
 
-module load cuda
 module load "${PYTHON_MODULE}"
 source "${VENV_PATH}/bin/activate"
 
