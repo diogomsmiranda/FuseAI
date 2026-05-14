@@ -19,6 +19,8 @@ mkdir -p /mnt/scratch-$HOSTNAME/$USER/tmp
 mkdir -p /mnt/scratch-$HOSTNAME/$USER/wandb
 mkdir -p /mnt/scratch-$HOSTNAME/$USER/.triton/autotune
 
+set -euo pipefail
+
 module load cuda
 
 export TMPDIR=/mnt/scratch-$HOSTNAME/$USER/tmp
@@ -28,14 +30,12 @@ export HF_DATASETS_CACHE=/mnt/scratch-$HOSTNAME/$USER/.hf/datasets
 export TORCH_HOME=/mnt/scratch-$HOSTNAME/$USER/.torch
 export PIP_CACHE_DIR=/mnt/scratch-$HOSTNAME/$USER/.cache/pip
 export CONDA_PKGS_DIRS=/mnt/scratch-$HOSTNAME/$USER/.conda/pkg
-export CUDA_HOME="$(dirname "$(dirname "$(readlink -f "$(which nvcc)")")")"
+export CUDA_HOME=/opt/spack-software/installs/gcc-11.4.0/cuda-12.4.1-xfzpw5nlstxy36knoi7r2kuaitcrxs6a
 export PATH="$CUDA_HOME/bin:$PATH"
 export LD_LIBRARY_PATH="$CUDA_HOME/lib64:${LD_LIBRARY_PATH:-}"
 export TRITON_CACHE_DIR=/mnt/scratch-$HOSTNAME/$USER/.triton
 
 export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True # pytorch memory management 
-
-set -euo pipefail
 
 SCRIPT_DIR="${SLURM_SUBMIT_DIR:-$(pwd)}"
 source "${SCRIPT_DIR}/00_env.sh"
