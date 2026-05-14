@@ -45,6 +45,7 @@ export WANDB_NAME="fusellm-lr1e5-bs${TRAIN_PER_DEVICE_BATCH_SIZE}-ga${TRAIN_GRAD
 export WANDB_DIR=/mnt/scratch-$HOSTNAME/$USER/wandb
 export WANDB_RUN_ID="fusellm-default-run"
 export WANDB_RESUME="allow"
+export WANDB_MODE=offline
 
 module load "${PYTHON_MODULE}"
 source "${VENV_PATH}/bin/activate"
