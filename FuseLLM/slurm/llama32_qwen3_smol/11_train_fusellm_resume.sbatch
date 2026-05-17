@@ -6,7 +6,7 @@
 #SBATCH -w dionysus
 #SBATCH --gres=gpu:4
 #SBATCH --cpus-per-task=32
-#SBATCH --mem=256G
+#SBATCH --mem=512G
 #SBATCH --output=/mnt/home/diogomiranda/FuseAI/FuseLLM/slurm/llama32_qwen3_smol/outputs/slurm_train_fusellm_resume-%j.out
 #SBATCH --error=/mnt/home/diogomiranda/FuseAI/FuseLLM/slurm/llama32_qwen3_smol/errors/slurm_train_fusellm_resume-%j.err
 
@@ -102,7 +102,7 @@ deepspeed --master_port "${MASTER_PORT}" ./src/train.py \
   --lm_loss_weight 0.9 \
   --distill_greater_as_gt True \
   --distill_greater_as_gt_type hard \
-  --dataloader_num_workers 8 \
+  --dataloader_num_workers 2 \
   --remove_unused_columns False 2>&1 | tee "${LOG_DIR}/train_resume.log"
 
 deactivate
