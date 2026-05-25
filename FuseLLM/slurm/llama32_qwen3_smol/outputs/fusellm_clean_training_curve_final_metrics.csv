@@ -1,0 +1,10 @@
+metric,value
+eval_loss,2.0986
+eval_runtime,160.76
+eval_samples_per_second,2.438
+eval_steps_per_second,0.61
+perplexity,8.1551
+train_loss,11.851554844368637
+train_runtime,73997.615
+train_samples_per_second,9.556
+train_steps_per_second,0.075
