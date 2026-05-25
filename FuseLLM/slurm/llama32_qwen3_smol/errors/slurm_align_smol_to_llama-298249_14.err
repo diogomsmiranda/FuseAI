@@ -1,0 +1,48 @@
+Align blending model's logits with base model's logits. (num_proc=8):   0%|          | 0/93978 [00:00<?, ? examples/s]Align blending model's logits with base model's logits. (num_proc=8):   0%|          | 0/93978 [02:26<?, ? examples/s]Align blending model's logits with base model's logits. (num_proc=8):   0%|          | 0/93978 [02:35<?, ? examples/s]Align blending model's logits with base model's logits. (num_proc=8):   0%|          | 0/93978 [03:23<?, ? examples/s]Align blending model's logits with base model's logits. (num_proc=8):   0%|          | 0/93978 [03:44<?, ? examples/s]Align blending model's logits with base model's logits. (num_proc=8):   0%|          | 0/93978 [04:17<?, ? examples/s]Align blending model's logits with base model's logits. (num_proc=8):   0%|          | 0/93978 [04:18<?, ? examples/s]Align blending model's logits with base model's logits. (num_proc=8):   0%|          | 0/93978 [04:28<?, ? examples/s]Align blending model's logits with base model's logits. (num_proc=8):   0%|          | 0/93978 [07:01<?, ? examples/s]Align blending model's logits with base model's logits. (num_proc=8):   0%|          | 0/93978 [07:01<?, ? examples/s]
+multiprocess.pool.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "/mnt/home/diogomiranda/mopd/lib/python3.10/site-packages/datasets/arrow_dataset.py", line 3777, in _map_single
+    writer.write_batch(batch, try_original_type=try_original_type)
+  File "/mnt/home/diogomiranda/mopd/lib/python3.10/site-packages/datasets/arrow_writer.py", line 662, in write_batch
+    self.write_table(pa_table, writer_batch_size)
+  File "/mnt/home/diogomiranda/mopd/lib/python3.10/site-packages/datasets/arrow_writer.py", line 680, in write_table
+    self.pa_writer.write_table(pa_table, writer_batch_size)
+  File "pyarrow/ipc.pxi", line 616, in pyarrow.lib._CRecordBatchWriter.write_table
+  File "pyarrow/error.pxi", line 89, in pyarrow.lib.check_status
+  File "/mnt/home/diogomiranda/mopd/lib/python3.10/site-packages/fsspec/implementations/local.py", line 473, in write
+    return self.f.write(*args, **kwargs)
+OSError: [Errno 122] Disk quota exceeded
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/home/diogomiranda/mopd/lib/python3.10/site-packages/multiprocess/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+  File "/mnt/home/diogomiranda/mopd/lib/python3.10/site-packages/datasets/utils/py_utils.py", line 586, in _write_generator_to_queue
+    for i, result in enumerate(func(**kwargs)):
+  File "/mnt/home/diogomiranda/mopd/lib/python3.10/site-packages/datasets/arrow_dataset.py", line 3789, in _map_single
+    writer.finalize()
+  File "/mnt/home/diogomiranda/mopd/lib/python3.10/site-packages/datasets/arrow_writer.py", line 693, in finalize
+    self.stream.close()
+  File "/mnt/home/diogomiranda/mopd/lib/python3.10/site-packages/fsspec/implementations/local.py", line 491, in close
+    return self.f.close()
+OSError: [Errno 122] Disk quota exceeded
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/home/diogomiranda/FuseAI/FuseLLM/./src/utils/token_alignment.py", line 177, in <module>
+    base_model_blending_model_logits_datasets[k] = base_model_logits_datasets[
+  File "/mnt/home/diogomiranda/mopd/lib/python3.10/site-packages/datasets/arrow_dataset.py", line 562, in wrapper
+    out: Union["Dataset", "DatasetDict"] = func(self, *args, **kwargs)
+  File "/mnt/home/diogomiranda/mopd/lib/python3.10/site-packages/datasets/arrow_dataset.py", line 3397, in map
+    for rank, done, content in iflatmap_unordered(
+  File "/mnt/home/diogomiranda/mopd/lib/python3.10/site-packages/datasets/utils/py_utils.py", line 626, in iflatmap_unordered
+    [async_result.get(timeout=0.05) for async_result in async_results]
+  File "/mnt/home/diogomiranda/mopd/lib/python3.10/site-packages/datasets/utils/py_utils.py", line 626, in <listcomp>
+    [async_result.get(timeout=0.05) for async_result in async_results]
+  File "/mnt/home/diogomiranda/mopd/lib/python3.10/site-packages/multiprocess/pool.py", line 774, in get
+    raise self._value
+OSError: [Errno 122] Disk quota exceeded

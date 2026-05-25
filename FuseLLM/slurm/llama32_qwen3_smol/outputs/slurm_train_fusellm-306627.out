@@ -1,0 +1,22 @@
+Traceback (most recent call last):
+  File "/mnt/home/diogomiranda/mopd/bin/deepspeed", line 3, in <module>
+    from deepspeed.launcher.runner import main
+  File "/mnt/home/diogomiranda/mopd/lib/python3.10/site-packages/deepspeed/__init__.py", line 25, in <module>
+    from . import ops
+  File "/mnt/home/diogomiranda/mopd/lib/python3.10/site-packages/deepspeed/ops/__init__.py", line 15, in <module>
+    from ..git_version_info import compatible_ops as __compatible_ops__
+  File "/mnt/home/diogomiranda/mopd/lib/python3.10/site-packages/deepspeed/git_version_info.py", line 29, in <module>
+    op_compatible = builder.is_compatible()
+  File "/mnt/home/diogomiranda/mopd/lib/python3.10/site-packages/deepspeed/ops/op_builder/fp_quantizer.py", line 35, in is_compatible
+    sys_cuda_major, _ = installed_cuda_version()
+  File "/mnt/home/diogomiranda/mopd/lib/python3.10/site-packages/deepspeed/ops/op_builder/builder.py", line 53, in installed_cuda_version
+    output = subprocess.check_output([cuda_home + "/bin/nvcc", "-V"], universal_newlines=True)
+  File "/usr/lib/python3.10/subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "/usr/lib/python3.10/subprocess.py", line 503, in run
+    with Popen(*popenargs, **kwargs) as process:
+  File "/usr/lib/python3.10/subprocess.py", line 971, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/lib/python3.10/subprocess.py", line 1863, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: './bin/nvcc'

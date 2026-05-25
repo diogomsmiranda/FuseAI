@@ -1,0 +1,10 @@
+03/22/2026 19:20:04 - INFO - __main__ - Data processing args: Namespace(model_name_or_path='/mnt/scratch-artemis/diogomiranda/SmolLM2-1.7B', dataset='/mnt/scratch-artemis/diogomiranda/fusellm_llama32_qwen3_smol/01_minipile_split', dataset_save_dir='/mnt/scratch-artemis/diogomiranda/fusellm_llama32_qwen3_smol/02_logits_smol2_1p7b_11_16', dataset_sample_prop=None, dataset_split_num=16, dataset_index=11, cache_dir='/mnt/scratch-artemis/diogomiranda/hf_cache', model_max_length=2048, training_mode='full', load_in_half='bf16', batch_size=16, preprocessing_num_workers=4, top_k_logits=10, save_per_token_metric=True, no_assert=False)
+03/22/2026 19:20:04 - INFO - __main__ - Split num: 16; Split index: 11.
+03/22/2026 19:20:04 - INFO - __main__ - train: start_index: 1033758, end_index: 1127736, select_size: 93978
+03/22/2026 19:20:04 - INFO - __main__ - validation: start_index: 495, end_index: 540, select_size: 45
+03/22/2026 19:20:04 - INFO - __main__ - test: start_index: 10219, end_index: 11148, select_size: 929
+03/22/2026 19:20:04 - INFO - src.utils.others - Loading tokenizer.
+03/22/2026 19:20:04 - INFO - src.utils.others - bos_token: <|endoftext|>, 0 eos_token: <|endoftext|>, 0 unk_token: <|endoftext|>, 0 pad_token: <|endoftext|>, 0 
+03/22/2026 19:21:28 - INFO - src.utils.others - Loading tokenizer.
+03/22/2026 19:21:28 - INFO - src.utils.others - bos_token: <|endoftext|>, 0 eos_token: <|endoftext|>, 0 unk_token: <|endoftext|>, 0 pad_token: <|endoftext|>, 0 
+03/22/2026 19:21:28 - INFO - src.utils.others - Loading base model.

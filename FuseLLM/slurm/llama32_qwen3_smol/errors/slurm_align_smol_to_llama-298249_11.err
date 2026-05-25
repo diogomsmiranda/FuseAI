@@ -1,0 +1,48 @@
+Align blending model's logits with base model's logits. (num_proc=8):   0%|          | 0/93978 [00:00<?, ? examples/s]Align blending model's logits with base model's logits. (num_proc=8):   0%|          | 100/93978 [02:54<45:30:04,  1.74s/ examples]Align blending model's logits with base model's logits. (num_proc=8):   0%|          | 200/93978 [03:29<24:00:18,  1.09 examples/s]Align blending model's logits with base model's logits. (num_proc=8):   0%|          | 300/93978 [03:31<13:17:11,  1.96 examples/s]Align blending model's logits with base model's logits. (num_proc=8):   0%|          | 400/93978 [03:46<9:36:37,  2.70 examples/s] Align blending model's logits with base model's logits. (num_proc=8):   1%|          | 500/93978 [04:24<9:38:52,  2.69 examples/s]Align blending model's logits with base model's logits. (num_proc=8):   1%|          | 600/93978 [04:25<6:28:20,  4.01 examples/s]Align blending model's logits with base model's logits. (num_proc=8):   1%|          | 600/93978 [04:38<6:28:20,  4.01 examples/s]Align blending model's logits with base model's logits. (num_proc=8):   1%|          | 700/93978 [05:34<10:14:55,  2.53 examples/s]Align blending model's logits with base model's logits. (num_proc=8):   1%|          | 800/93978 [05:44<7:45:15,  3.34 examples/s] Align blending model's logits with base model's logits. (num_proc=8):   1%|          | 800/93978 [05:58<7:45:15,  3.34 examples/s]Align blending model's logits with base model's logits. (num_proc=8):   1%|          | 900/93978 [06:48<10:32:32,  2.45 examples/s]Align blending model's logits with base model's logits. (num_proc=8):   1%|          | 1000/93978 [06:58<8:03:30,  3.20 examples/s]Align blending model's logits with base model's logits. (num_proc=8):   1%|          | 1000/93978 [07:18<8:03:30,  3.20 examples/s]Align blending model's logits with base model's logits. (num_proc=8):   1%|          | 1100/93978 [07:20<7:19:55,  3.52 examples/s]Align blending model's logits with base model's logits. (num_proc=8):   1%|▏         | 1200/93978 [07:59<8:07:25,  3.17 examples/s]Align blending model's logits with base model's logits. (num_proc=8):   1%|▏         | 1300/93978 [08:24<7:37:22,  3.38 examples/s]Align blending model's logits with base model's logits. (num_proc=8):   1%|▏         | 1400/93978 [08:37<6:18:54,  4.07 examples/s]Align blending model's logits with base model's logits. (num_proc=8):   2%|▏         | 1500/93978 [08:48<5:13:45,  4.91 examples/s]Align blending model's logits with base model's logits. (num_proc=8):   2%|▏         | 1600/93978 [10:20<10:48:18,  2.37 examples/s]Align blending model's logits with base model's logits. (num_proc=8):   2%|▏         | 1700/93978 [10:28<8:10:34,  3.14 examples/s] Align blending model's logits with base model's logits. (num_proc=8):   2%|▏         | 1700/93978 [10:48<8:10:34,  3.14 examples/s]Align blending model's logits with base model's logits. (num_proc=8):   2%|▏         | 1800/93978 [11:19<9:35:58,  2.67 examples/s]Align blending model's logits with base model's logits. (num_proc=8):   2%|▏         | 1900/93978 [11:35<7:57:23,  3.21 examples/s]Align blending model's logits with base model's logits. (num_proc=8):   2%|▏         | 2000/93978 [11:55<7:04:40,  3.61 examples/s]Align blending model's logits with base model's logits. (num_proc=8):   2%|▏         | 2100/93978 [11:57<5:06:20,  5.00 examples/s]Align blending model's logits with base model's logits. (num_proc=8):   2%|▏         | 2100/93978 [12:08<5:06:20,  5.00 examples/s]Align blending model's logits with base model's logits. (num_proc=8):   2%|▏         | 2200/93978 [12:37<6:37:40,  3.85 examples/s]Align blending model's logits with base model's logits. (num_proc=8):   2%|▏         | 2300/93978 [13:20<7:57:24,  3.20 examples/s]Align blending model's logits with base model's logits. (num_proc=8):   3%|▎         | 2400/93978 [14:01<8:37:30,  2.95 examples/s]Align blending model's logits with base model's logits. (num_proc=8):   3%|▎         | 2500/93978 [14:22<7:38:06,  3.33 examples/s]Align blending model's logits with base model's logits. (num_proc=8):   3%|▎         | 2600/93978 [14:33<6:11:57,  4.09 examples/s]Align blending model's logits with base model's logits. (num_proc=8):   3%|▎         | 2700/93978 [15:31<8:46:41,  2.89 examples/s]Align blending model's logits with base model's logits. (num_proc=8):   3%|▎         | 2700/93978 [19:21<10:54:28,  2.32 examples/s]
+multiprocess.pool.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "/mnt/home/diogomiranda/mopd/lib/python3.10/site-packages/datasets/arrow_dataset.py", line 3777, in _map_single
+    writer.write_batch(batch, try_original_type=try_original_type)
+  File "/mnt/home/diogomiranda/mopd/lib/python3.10/site-packages/datasets/arrow_writer.py", line 662, in write_batch
+    self.write_table(pa_table, writer_batch_size)
+  File "/mnt/home/diogomiranda/mopd/lib/python3.10/site-packages/datasets/arrow_writer.py", line 680, in write_table
+    self.pa_writer.write_table(pa_table, writer_batch_size)
+  File "pyarrow/ipc.pxi", line 616, in pyarrow.lib._CRecordBatchWriter.write_table
+  File "pyarrow/error.pxi", line 89, in pyarrow.lib.check_status
+  File "/mnt/home/diogomiranda/mopd/lib/python3.10/site-packages/fsspec/implementations/local.py", line 473, in write
+    return self.f.write(*args, **kwargs)
+OSError: [Errno 122] Disk quota exceeded
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/home/diogomiranda/mopd/lib/python3.10/site-packages/multiprocess/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+  File "/mnt/home/diogomiranda/mopd/lib/python3.10/site-packages/datasets/utils/py_utils.py", line 586, in _write_generator_to_queue
+    for i, result in enumerate(func(**kwargs)):
+  File "/mnt/home/diogomiranda/mopd/lib/python3.10/site-packages/datasets/arrow_dataset.py", line 3789, in _map_single
+    writer.finalize()
+  File "/mnt/home/diogomiranda/mopd/lib/python3.10/site-packages/datasets/arrow_writer.py", line 693, in finalize
+    self.stream.close()
+  File "/mnt/home/diogomiranda/mopd/lib/python3.10/site-packages/fsspec/implementations/local.py", line 491, in close
+    return self.f.close()
+OSError: [Errno 122] Disk quota exceeded
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/home/diogomiranda/FuseAI/FuseLLM/./src/utils/token_alignment.py", line 177, in <module>
+    base_model_blending_model_logits_datasets[k] = base_model_logits_datasets[
+  File "/mnt/home/diogomiranda/mopd/lib/python3.10/site-packages/datasets/arrow_dataset.py", line 562, in wrapper
+    out: Union["Dataset", "DatasetDict"] = func(self, *args, **kwargs)
+  File "/mnt/home/diogomiranda/mopd/lib/python3.10/site-packages/datasets/arrow_dataset.py", line 3397, in map
+    for rank, done, content in iflatmap_unordered(
+  File "/mnt/home/diogomiranda/mopd/lib/python3.10/site-packages/datasets/utils/py_utils.py", line 626, in iflatmap_unordered
+    [async_result.get(timeout=0.05) for async_result in async_results]
+  File "/mnt/home/diogomiranda/mopd/lib/python3.10/site-packages/datasets/utils/py_utils.py", line 626, in <listcomp>
+    [async_result.get(timeout=0.05) for async_result in async_results]
+  File "/mnt/home/diogomiranda/mopd/lib/python3.10/site-packages/multiprocess/pool.py", line 774, in get
+    raise self._value
+OSError: [Errno 122] Disk quota exceeded

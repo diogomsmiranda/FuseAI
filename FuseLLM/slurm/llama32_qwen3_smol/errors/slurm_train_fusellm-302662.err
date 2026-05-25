@@ -1,0 +1,3 @@
+environment: line 17: /opt/spack-software/installs/gcc-11.4.0/lmod-8.7.37-o2oht6lok73e3nw5vxflh3rtriuazews/lmod/lmod/libexec/lmod: No such file or directory
+environment: line 17: /opt/spack-software/installs/gcc-11.4.0/lmod-8.7.37-o2oht6lok73e3nw5vxflh3rtriuazews/lmod/lmod/libexec/lmod: No such file or directory
+slurmstepd-artemis: error: *** JOB 302662 ON artemis CANCELLED AT 2026-04-22T18:28:50 ***

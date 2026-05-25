@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "/mnt/home/diogomiranda/FuseAI/FuseLLM/./src/utils/vocab_mapping.py", line 109, in <module>
+    with multiprocessing.Pool(64) as pool:
+  File "/usr/lib/python3.10/multiprocessing/context.py", line 119, in Pool
+    return Pool(processes, initializer, initargs, maxtasksperchild,
+  File "/usr/lib/python3.10/multiprocessing/pool.py", line 215, in __init__
+    self._repopulate_pool()
+  File "/usr/lib/python3.10/multiprocessing/pool.py", line 306, in _repopulate_pool
+    return self._repopulate_pool_static(self._ctx, self.Process,
+  File "/usr/lib/python3.10/multiprocessing/pool.py", line 329, in _repopulate_pool_static
+    w.start()
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 121, in start
+    self._popen = self._Popen(self)
+  File "/usr/lib/python3.10/multiprocessing/context.py", line 281, in _Popen
+    return Popen(process_obj)
+  File "/usr/lib/python3.10/multiprocessing/popen_fork.py", line 19, in __init__
+    self._launch(process_obj)
+  File "/usr/lib/python3.10/multiprocessing/popen_fork.py", line 66, in _launch
+    self.pid = os.fork()
+OSError: [Errno 12] Cannot allocate memory

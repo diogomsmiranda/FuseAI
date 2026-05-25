@@ -1,0 +1,1 @@
+slurmstepd-dionysus: error: Detected 419 oom-kill event(s) in StepId=303108.batch. Some of your processes may have been killed by the cgroup out-of-memory handler.
